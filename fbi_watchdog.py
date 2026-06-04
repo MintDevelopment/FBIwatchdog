@@ -335,9 +335,8 @@ class SiteManager:
 
 
 site_manager = SiteManager()
-DOMAINS = [...] site_manager.domains
-ONION_SITES = [...] site_manager.onion_sites
-
+DOMAINS = site_manager.domains
+ONION_SITES = site_manager.onion_sites
 
 class DWIConfig:
     def __init__(self):
