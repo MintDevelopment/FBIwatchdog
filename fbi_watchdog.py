@@ -336,8 +336,8 @@ class SiteManager:
 
 site_manager = SiteManager()
 DOMAINS = site_manager.domains
-ONION_SITES = site_manager.onion_sites.list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
-
+ONION_SITES = site_manager.onion_sites
+list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 
 class DWIConfig:
     def __init__(self):
