@@ -337,6 +337,7 @@ class SiteManager:
 site_manager = SiteManager()
 DOMAINS = site_manager.domains
 ONION_SITES = site_manager.onion_sites
+
 ONION_SITES = site_manager.onion_sites
 list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 
