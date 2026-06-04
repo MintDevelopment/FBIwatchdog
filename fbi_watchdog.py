@@ -337,6 +337,7 @@ class SiteManager:
 site_manager = SiteManager()
 DOMAINS = site_manager.domains
 ONION_SITES = site_manager.onion_sites
+ONION_SITES = site_manager.onion_sites
 list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 
 class DWIConfig:
@@ -3581,7 +3582,6 @@ def _remove_site_prompt():
             console.print(Padding(f"[yellow]    ⚠ Not found in monitored sites: {site}[/yellow]", (0, 0, 0, 4)))
     
     DOMAINS = site_manager.domains
-    ONION_SITES = site_manager.onion_sites
 
 
 def _list_sites(sites: list, title: str, color: str):
