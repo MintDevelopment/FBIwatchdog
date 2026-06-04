@@ -335,8 +335,8 @@ class SiteManager:
 
 
 site_manager = SiteManager()
-DOMAINS = site_manager.domains
-ONION_SITES = site_manager.onion_sites
+DOMAINS = [...] site_manager.domains
+ONION_SITES = [...] site_manager.onion_sites
 
 
 class DWIConfig:
@@ -922,7 +922,7 @@ class EscalationEngine:
     def _quick_dns_check(self, domain: str) -> dict:
         evidence = {}
         sei_indicators = ['fbi.seized', 'seized.gov', 'europol', 'interpol', 'seized',
-                          'forfeiture', 'usdoj', 'justice.gov', 'usssdomainseizure']
+                          'forfeiture', 'usdoj', 'justice.gov', 'ussseizure']
         
         for rtype in DNS_RECORDS:
             try:
