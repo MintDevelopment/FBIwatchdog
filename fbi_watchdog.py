@@ -3579,9 +3579,9 @@ def _list_sites(sites, label, color):
     for site in sites:
         print(f"[{color}] {label}: {site}")
 
-
+F
 # --- Calls ---
-list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
+_list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 show_all_sites(DOMAINS, ONION_SITES)
 
 
