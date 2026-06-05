@@ -1,7 +1,7 @@
 import sys
 import os
 import time
-import jsonr
+import json
 import signal
 import hashlib
 import argparse
