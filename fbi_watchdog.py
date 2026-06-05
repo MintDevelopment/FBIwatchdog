@@ -3545,8 +3545,36 @@ def _add_site_prompt():
         else:
             console.print(Padding(f"[yellow]    ⚠ Already monitored: {site}[/yellow]", (0, 0, 0, 4)))
     
-    DOMAINS = site_manager.domains
-    ONION_SITES = site_manager.onion_sites
+# --- Setup ---
+site_manager = SiteManager()
+DOMAINS = site_manager.domains
+ONION_SITES = site_manager.onion_sites
+
+
+# --- Functions ---
+def list_sites(sites, label, color, domains):
+    # your existing logic here
+    for site in sites:
+        print(f"[{color}] {label}: {site}")
+
+
+def show_all_sites(domains, onion_sites):
+    # this function previously caused F823
+    # now it receives the values explicitly
+    _list_sites(domains, "Clearnet Domains", "cyan")
+    _list_sites(onion_sites, "Onion Sites", "magenta")
+
+
+def _list_sites(sites, label, color):
+    # internal helper
+    for site in sites:
+        print(f"[{color}] {label}: {site}")
+
+
+# --- Calls ---
+list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
+show_all_sites(DOMAINS, ONION_SITES)
+
 
 
 def _remove_site_prompt():
