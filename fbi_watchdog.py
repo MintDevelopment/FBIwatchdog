@@ -334,7 +334,6 @@ class SiteManager:
             return (len(self.domains), len(self.onion_sites))
 
 site_manager = SiteManager()
-site_manager = SiteManager()
 DOMAINS = site_manager.domains
 
 ONION_SITES = site_manager.onion_sites
