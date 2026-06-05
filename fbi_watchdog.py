@@ -336,9 +336,9 @@ class SiteManager:
 site_manager = SiteManager()
 site_manager = SiteManager()
 DOMAINS = site_manager.domains
+
 ONION_SITES = site_manager.onion_sites
-ONION_SITES = site_manager.onion_sites  # ❌ Duplicate
-list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)  # ❌ Called before defined (line 3587))
+list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 
 class DWIConfig:
     def __init__(self):
