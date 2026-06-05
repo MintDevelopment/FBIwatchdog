@@ -3551,17 +3551,17 @@ DOMAINS = global DOMAINS, ONION_SITES site_manager.domains
 ONION_SITES = site_manager.onion_sites
 
 # REMOVE this line:
-# list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
+# _list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 
-# Ensure list_sites is defined somewhere below.
+# Ensure _list_sites is defined somewhere below.
 # Then add this safe entry point:
 
 if __name__ == "__main__":
-    if 'list_sites' in globals():
-        list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
+    if '_list_sites' in globals():
+        _list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 
 # --- Functions ---
-def list_sites(sites, label, color, domains):
+def _list_sites(sites, label, color, domains):
     # your existing logic here
     for site in sites:
         print(f"[{color}] {label}: {site}")
@@ -3879,7 +3879,7 @@ def main():
     try:
         args = parse_args()
         
-        if args.list_sites:
+        if args._list_sites:
             console.print("")
             _list_sites(DOMAINS, "Clearnet Domains", "cyan")
             _list_sites(ONION_SITES, "Onion Sites", "magenta")
