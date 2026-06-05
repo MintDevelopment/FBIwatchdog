@@ -7,7 +7,7 @@ import hashlib
 import argparse
 import tempfile
 import random
-import secret
+import secrets
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
