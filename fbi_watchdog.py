@@ -333,13 +333,12 @@ class SiteManager:
         except Exception:
             return (len(self.domains), len(self.onion_sites))
 
-
+site_manager = SiteManager()
 site_manager = SiteManager()
 DOMAINS = site_manager.domains
 ONION_SITES = site_manager.onion_sites
-
-ONION_SITES = site_manager.onion_sites
-list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
+ONION_SITES = site_manager.onion_sites  # ❌ Duplicate
+list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)  # ❌ Called before defined (line 3587))
 
 class DWIConfig:
     def __init__(self):
