@@ -3547,7 +3547,7 @@ def _add_site_prompt():
     
 # --- Setup ---
 site_manager = SiteManager()
-DOMAINS = DOMAINS, ONION_SITES site_manager.domains
+DOMAINS = site_manager.domains
 ONION_SITES = site_manager.onion_sites
 
 # REMOVE this line:
