@@ -336,7 +336,7 @@ class SiteManager:
 site_manager = SiteManager()
 DOMAINS = site_manager.domains
 ONION_SITES = site_manager.onion_sites
-_list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
+list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 
 class DWIConfig:
     def __init__(self):
@@ -3453,9 +3453,9 @@ def manage_sites_menu():
         elif choice == "2":
             _remove_site_prompt()
         elif choice == "3":
-            _list_sites(DOMAINS, "Clearnet Domains", "cyan")
+            list_sites(DOMAINS, "Clearnet Domains", "cyan")
         elif choice == "4":
-            _list_sites(ONION_SITES, "Onion Sites", "magenta")
+            list_sites(ONION_SITES, "Onion Sites", "magenta")
         elif choice == "5":
             return
         else:
@@ -3551,17 +3551,17 @@ DOMAINS = site_manager.domains
 ONION_SITES = site_manager.onion_sites
 
 # REMOVE this line:
-# _list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
+# list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 
-# Ensure _list_sites is defined somewhere below.
+# Ensure list_sites is defined somewhere below.
 # Then add this safe entry point:
 
 if __name__ == "__main__":
-    if '_list_sites' in globals():
-        _list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
+    if 'list_sites' in globals():
+        list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 
 # --- Functions ---
-def _list_sites(sites, label, color, domains):
+def list_sites(sites, label, color, domains):
     # your existing logic here
     for site in sites:
         print(f"[{color}] {label}: {site}")
@@ -3570,18 +3570,18 @@ def _list_sites(sites, label, color, domains):
 def show_all_sites(domains, onion_sites):
     # this function previously caused F823
     # now it receives the values explicitly
-    _list_sites(domains, "Clearnet Domains", "cyan")
-    _list_sites(onion_sites, "Onion Sites", "magenta")
+    list_sites(domains, "Clearnet Domains", "cyan")
+    list_sites(onion_sites, "Onion Sites", "magenta")
 
 
-def _list_sites(sites, label, color):
+def list_sites(sites, label, color):
     # internal helper
     for site in sites:
         print(f"[{color}] {label}: {site}")
 
 F
 # --- Calls ---
-_list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
+list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 show_all_sites(DOMAINS, ONION_SITES)
 
 
@@ -3618,7 +3618,7 @@ def _remove_site_prompt():
     
     DOMAINS = site_manager.domains
 
-def _list_sites(sites: list, title: str, color: str):
+def list_sites(sites: list, title: str, color: str):
     console.print("")
     console.print(Padding(f"[bold {color}]  {title} ({len(sites)} total)[/bold {color}]", (0, 0, 0, 4)))
     console.print(Padding(f"[{color}]  {'─' * 55}[/{color}]", (0, 0, 0, 4)))
@@ -3879,10 +3879,10 @@ def main():
     try:
         args = parse_args()
         
-        if args._list_sites:
+        if args.list_sites:
             console.print("")
-            _list_sites(DOMAINS, "Clearnet Domains", "cyan")
-            _list_sites(ONION_SITES, "Onion Sites", "magenta")
+            list_sites(DOMAINS, "Clearnet Domains", "cyan")
+            list_sites(ONION_SITES, "Onion Sites", "magenta")
             sys.exit(0)
         
         if args.add:
