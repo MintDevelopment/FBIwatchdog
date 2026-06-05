@@ -1,7 +1,7 @@
 import sys
 import os
 import time
-import json
+import jsonr
 import signal
 import hashlib
 import argparse
@@ -3453,9 +3453,9 @@ def manage_sites_menu():
         elif choice == "2":
             _remove_site_prompt()
         elif choice == "3":
-            list_sites(DOMAINS, "Clearnet Domains", "cyan")
+            _list_sites(DOMAINS, "Clearnet Domains", "cyan")
         elif choice == "4":
-            list_sites(ONION_SITES, "Onion Sites", "magenta")
+            _list_sites(ONION_SITES, "Onion Sites", "magenta")
         elif choice == "5":
             return
         else:
@@ -3570,16 +3570,16 @@ def list_sites(sites, label, color, domains):
 def show_all_sites(domains, onion_sites):
     # this function previously caused F823
     # now it receives the values explicitly
-    list_sites(domains, "Clearnet Domains", "cyan")
-    list_sites(onion_sites, "Onion Sites", "magenta")
+    _list_sites(domains, "Clearnet Domains", "cyan")
+    _list_sites(onion_sites, "Onion Sites", "magenta")
 
 
-def list_sites(sites, label, color):
+def _list_sites(sites, label, color):
     # internal helper
     for site in sites:
         print(f"[{color}] {label}: {site}")
 
-F
+
 # --- Calls ---
 list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 show_all_sites(DOMAINS, ONION_SITES)
@@ -3618,7 +3618,7 @@ def _remove_site_prompt():
     
     DOMAINS = site_manager.domains
 
-def list_sites(sites: list, title: str, color: str):
+def _list_sites(sites: list, title: str, color: str):
     console.print("")
     console.print(Padding(f"[bold {color}]  {title} ({len(sites)} total)[/bold {color}]", (0, 0, 0, 4)))
     console.print(Padding(f"[{color}]  {'─' * 55}[/{color}]", (0, 0, 0, 4)))
@@ -3881,8 +3881,8 @@ def main():
         
         if args.list_sites:
             console.print("")
-            list_sites(DOMAINS, "Clearnet Domains", "cyan")
-            list_sites(ONION_SITES, "Onion Sites", "magenta")
+            _list_sites(DOMAINS, "Clearnet Domains", "cyan")
+            _list_sites(ONION_SITES, "Onion Sites", "magenta")
             sys.exit(0)
         
         if args.add:
