@@ -1,7 +1,7 @@
 import sys
 import os
 import time
-import json
+import jsonr
 import signal
 import hashlib
 import argparse
@@ -3550,6 +3550,15 @@ site_manager = SiteManager()
 DOMAINS = site_manager.domains
 ONION_SITES = site_manager.onion_sites
 
+# REMOVE this line:
+# list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
+
+# Ensure list_sites is defined somewhere below.
+# Then add this safe entry point:
+
+if __name__ == "__main__":
+    if 'list_sites' in globals():
+        list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
 
 # --- Functions ---
 def list_sites(sites, label, color, domains):
