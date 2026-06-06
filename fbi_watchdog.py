@@ -333,10 +333,11 @@ class SiteManager:
         except Exception:
             return (len(self.domains), len(self.onion_sites))
 
+
 site_manager = SiteManager()
 DOMAINS = site_manager.domains
 ONION_SITES = site_manager.onion_sites
-list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
+
 
 class DWIConfig:
     def __init__(self):
@@ -921,7 +922,7 @@ class EscalationEngine:
     def _quick_dns_check(self, domain: str) -> dict:
         evidence = {}
         sei_indicators = ['fbi.seized', 'seized.gov', 'europol', 'interpol', 'seized',
-                          'forfeiture', 'usdoj', 'justice.gov', 'ussseizure']
+                          'forfeiture', 'usdoj', 'justice.gov', 'usssdomainseizure']
         
         for rtype in DNS_RECORDS:
             try:
@@ -3423,7 +3424,7 @@ def show_startup_menu() -> dict:
 
 
 def manage_sites_menu():
-    DOMAINS, ONION_SITES
+    global DOMAINS, ONION_SITES
     
     while True:
         console.print("")
@@ -3512,7 +3513,7 @@ def toggle_monitors_menu(monitor_flags: dict) -> dict:
 
 
 def _add_site_prompt():
-    DOMAINS, ONION_SITES
+    global DOMAINS, ONION_SITES
     
     console.print("")
     console.print(Padding(
@@ -3545,49 +3546,12 @@ def _add_site_prompt():
         else:
             console.print(Padding(f"[yellow]    ⚠ Already monitored: {site}[/yellow]", (0, 0, 0, 4)))
     
-# --- Setup ---
-site_manager = SiteManager()
-DOMAINS = site_manager.domains
-ONION_SITES = site_manager.onion_sites
-
-# REMOVE this line:
-# list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
-
-# Ensure list_sites is defined somewhere below.
-# Then add this safe entry point:
-
-if __name__ == "__main__":
-    if 'list_sites' in globals():
-        list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
-
-# --- Functions ---
-def list_sites(sites, label, color, domains):
-    # your existing logic here
-    for site in sites:
-        print(f"[{color}] {label}: {site}")
-
-
-def show_all_sites(domains, onion_sites):
-    # this function previously caused F823
-    # now it receives the values explicitly
-    _list_sites(domains, "Clearnet Domains", "cyan")
-    _list_sites(onion_sites, "Onion Sites", "magenta")
-
-
-def _list_sites(sites, label, color):
-    # internal helper
-    for site in sites:
-        print(f"[{color}] {label}: {site}")
-
-
-# --- Calls ---
-list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
-show_all_sites(DOMAINS, ONION_SITES)
-
+    DOMAINS = site_manager.domains
+    ONION_SITES = site_manager.onion_sites
 
 
 def _remove_site_prompt():
-    DOMAINS, ONION_SITES
+    global DOMAINS, ONION_SITES
     
     console.print("")
     console.print(Padding(
@@ -3617,6 +3581,8 @@ def _remove_site_prompt():
             console.print(Padding(f"[yellow]    ⚠ Not found in monitored sites: {site}[/yellow]", (0, 0, 0, 4)))
     
     DOMAINS = site_manager.domains
+    ONION_SITES = site_manager.onion_sites
+
 
 def _list_sites(sites: list, title: str, color: str):
     console.print("")
@@ -3874,7 +3840,7 @@ def parse_args():
 
 
 def main():
-    DOMAINS, ONION_SITES
+    global DOMAINS, ONION_SITES
     
     try:
         args = parse_args()
