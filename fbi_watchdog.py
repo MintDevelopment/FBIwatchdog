@@ -3547,7 +3547,7 @@ def _add_site_prompt():
             console.print(Padding(f"[yellow]    ⚠ Already monitored: {site}[/yellow]", (0, 0, 0, 4)))
     
     DOMAINS = site_manager.domains
- site_manager = SiteManager()
+    site_manager = SiteManager()
 -DOMAINS = site_manager.domains
 -ONION_SITES = site_manager.onion_sites
 -_list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
