@@ -3553,7 +3553,7 @@ def _add_site_prompt():
     _list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
     DOMAINS = site_manager.domains
     ONION_SITES = site_manager.onion_sites
-    list_sites(sites: List[str], label: str, color: str, domains: List[str]) -> None:
+    def list_sites(...) -> None:
     if not sites:
         console.print(Padding(f"[bold red]No {label} found.[/bold red]", (0, 0, 0, 4)))
         return
