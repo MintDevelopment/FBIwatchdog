@@ -3424,7 +3424,7 @@ def show_startup_menu() -> dict:
 
 
 def manage_sites_menu():
-    DOMAINS, ONION_SITES
+    global DOMAINS, ONION_SITES
     
     while True:
         console.print("")
