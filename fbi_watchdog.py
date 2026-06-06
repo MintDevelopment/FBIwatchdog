@@ -3554,7 +3554,6 @@ def _add_site_prompt():
     DOMAINS = site_manager.domains
     ONION_SITES = site_manager.onion_sites
     def list_sites(sites: List[str], label: str, color: str, domains: List[str]) -> None:
-    """Display a formatted list of sites in the console."""
     if not sites:
         console.print(Padding(f"[bold red]No {label} found.[/bold red]", (0, 0, 0, 4)))
         return
