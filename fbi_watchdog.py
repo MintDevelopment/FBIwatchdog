@@ -3554,6 +3554,24 @@ def _add_site_prompt():
     DOMAINS = site_manager.domains
     ONION_SITES = site_manager.onion_sites
 
+def list_sites(sites: List[str], label: str, color: str, domains: List[str]) -> None:
++    """Display a formatted list of sites in the console."""
++    if not sites:
++        console.print(Padding(f"[bold red]No {label} found.[/bold red]", (0, 0, 0, 4)))
++        return
++    console.print(Padding(f"[bold {color}]→ {label} ({len(sites)} total)[/bold {color}]", (0, 0, 0, 4)))
++    for site in sites:
++        console.print(Padding(f"[{color}]{site}", (0, 0, 0, 6)))
++
++
++# --- Safe entry point ---
++if __name__ == "__main__":
++    # Ensure globals are accessible inside functions that may modify them
++    global DOMAINS, ONION_SITES
++
++    # Display monitored sites
++    list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
++    list_sites(DOMAINS, "Clearnet Domains", "cyan", ONION_SITES)
 
 def _remove_site_prompt():
     DOMAINS, ONION_SITES
