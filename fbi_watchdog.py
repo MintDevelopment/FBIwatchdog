@@ -3553,15 +3553,14 @@ def _add_site_prompt():
     _list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
     DOMAINS = site_manager.domains
     ONION_SITES = site_manager.onion_sites
-
-def list_sites(sites: List[str], label: str, color: str, domains: List[str]) -> None:
-+    """Display a formatted list of sites in the console."""
-+    if not sites:
-+        console.print(Padding(f"[bold red]No {label} found.[/bold red]", (0, 0, 0, 4)))
-+        return
-+    console.print(Padding(f"[bold {color}]→ {label} ({len(sites)} total)[/bold {color}]", (0, 0, 0, 4)))
-+    for site in sites:
-+        console.print(Padding(f"[{color}]{site}", (0, 0, 0, 6)))
+    def list_sites(sites: List[str], label: str, color: str, domains: List[str]) -> None:
+    """Display a formatted list of sites in the console."""
+    if not sites:
+        console.print(Padding(f"[bold red]No {label} found.[/bold red]", (0, 0, 0, 4)))
+        return
+    console.print(Padding(f"[bold {color}]→ {label} ({len(sites)} total)[/bold {color}]", (0, 0, 0, 4)))
+    for site in sites:
+        console.print(Padding(f"[{color}]{site}", (0, 0, 0, 6)))
 +
 +
 +# --- Safe entry point ---
