@@ -3513,7 +3513,7 @@ def toggle_monitors_menu(monitor_flags: dict) -> dict:
 
 
 def _add_site_prompt():
-    global DOMAINS, ONION_SITES
+    DOMAINS, ONION_SITES
     
     console.print("")
     console.print(Padding(
@@ -3551,7 +3551,7 @@ def _add_site_prompt():
 
 
 def _remove_site_prompt():
-    global DOMAINS, ONION_SITES
+    DOMAINS, ONION_SITES
     
     console.print("")
     console.print(Padding(
@@ -3840,7 +3840,7 @@ def parse_args():
 
 
 def main():
-    global DOMAINS, ONION_SITES
+    DOMAINS, ONION_SITES
     
     try:
         args = parse_args()
