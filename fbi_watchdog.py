@@ -3454,9 +3454,9 @@ def manage_sites_menu():
         elif choice == "2":
             _remove_site_prompt()
         elif choice == "3":
-            _list_sites(DOMAINS, "Clearnet Domains", "cyan")
+            list_sites(DOMAINS, "Clearnet Domains", "cyan")
         elif choice == "4":
-            _list_sites(ONION_SITES, "Onion Sites", "magenta")
+            list_sites(ONION_SITES, "Onion Sites", "magenta")
         elif choice == "5":
             return
         else:
@@ -3584,7 +3584,7 @@ def _remove_site_prompt():
     ONION_SITES = site_manager.onion_sites
 
 
-def _list_sites(sites: list, title: str, color: str):
+def list_sites(sites: list, title: str, color: str):
     console.print("")
     console.print(Padding(f"[bold {color}]  {title} ({len(sites)} total)[/bold {color}]", (0, 0, 0, 4)))
     console.print(Padding(f"[{color}]  {'─' * 55}[/{color}]", (0, 0, 0, 4)))
@@ -3847,8 +3847,8 @@ def main():
         
         if args.list_sites:
             console.print("")
-            _list_sites(DOMAINS, "Clearnet Domains", "cyan")
-            _list_sites(ONION_SITES, "Onion Sites", "magenta")
+            list_sites(DOMAINS, "Clearnet Domains", "cyan")
+            list_sites(ONION_SITES, "Onion Sites", "magenta")
             sys.exit(0)
         
         if args.add:
