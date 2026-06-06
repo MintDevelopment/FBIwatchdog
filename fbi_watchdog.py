@@ -3548,11 +3548,11 @@ def _add_site_prompt():
     
     DOMAINS = site_manager.domains
     site_manager = SiteManager()
--DOMAINS = site_manager.domains
--ONION_SITES = site_manager.onion_sites
--_list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
-+DOMAINS = site_manager.domains
-+ONION_SITES = site_manager.onion_sites
+    DOMAINS = site_manager.domains
+    ONION_SITES = site_manager.onion_sites
+    _list_sites(ONION_SITES, "Onion Sites", "magenta", DOMAINS)
+    DOMAINS = site_manager.domains
+    ONION_SITES = site_manager.onion_sites
 +
 +
 +# --- Functions ---
